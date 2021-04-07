@@ -183,11 +183,10 @@ body{
 
 #main-container{
   width: calc(100% - 245px);
-  height: 100%;
-  
+  height: calc(100% - 60px);
   position: absolute;
-  right: 0px;
-  top:60px
+  right:0px;
+  top:60px;
 }
 .user-menu-ul {
   list-style-type: none;

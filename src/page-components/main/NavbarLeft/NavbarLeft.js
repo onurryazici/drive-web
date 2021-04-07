@@ -6,22 +6,29 @@ import '../../../assets/Style.css'
 
 export default class NavbarLeft extends Component {
     render() {
+        const driveActive= window.location.pathname==="/" ? "sidenav-active" : "";
+        const mySharedActive = window.location.pathname==="/my-shared" ? "sidenav-active":"";
+        const sharedWithMeActive = window.location.pathname==="/shared-with-me" ? "sidenav-active" : ""
+        const trashActive = window.location.pathname === "/trash" ? "sidenav-active": "";
+        const settingsActive=window.location.pathname === "/settings" ? "sidenav-active":"";
         return (         
             <div className="sidenav">
                 <div className="sidenavInner">
                 <UploadButton></UploadButton>
-
                 <ul className="sidenav-ul">
-                    <li className="sidenav-active">
+                    <li className={driveActive}>
                         <a href="\">Drive'ım</a>
                     </li>
-                    <li>
+                    <li className={mySharedActive}>
+                        <a href="\my-shared">Paylaştıklarım</a>
+                    </li>
+                    <li className={sharedWithMeActive}>
                         <a href="\shared-with-me">Benimle paylaşılanlar</a>
                     </li>
-                    <li>
+                    <li className={trashActive}>
                         <a href="\trash">Çöp Kutusu</a>
                     </li>
-                    <li>
+                    <li className={settingsActive}>
                         <a href="\settings">Ayarlar</a>
                     </li>
                 </ul>

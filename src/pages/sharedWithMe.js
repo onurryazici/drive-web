@@ -1,18 +1,17 @@
 import React from 'react'
-import Header from  '../page-components/main/Header/Header'
-import NavbarLeft from  '../page-components/main/NavbarLeft/NavbarLeft'
-import '../assets/Style.css'
 import RFM from 'react-file-manager-rfm'
-import 'react-file-manager-rfm/dist/index.css'
-function Drive(){
-    return(
+import Header from '../page-components/main/Header/Header'
+import NavbarLeft from '../page-components/main/NavbarLeft/NavbarLeft'
+
+export default function SharedWithMe() {
+    return (
         <div>
             <Header/>
             <NavbarLeft/>
             <div id="main-container">
                 <RFM 
-                location                      = "/home/main/drive/tester"
-                rfmWindow                     = "DRIVE"
+                location                      = "/home/main/.sharedWithMe"
+                rfmWindow                     = "SHARED_WITH_ME"
                 API_URL                       = "http://192.168.91.128:3030"
                 API_URL_UserAuthentication    = "/api/open-service/userAuthentication"
                 API_URL_RemoveItemPermanently = "/api/secured/removeItemPermanently"
@@ -33,7 +32,5 @@ function Drive(){
                 />
                 </div>
         </div>
-    );
+    )
 }
-
-export default Drive;
