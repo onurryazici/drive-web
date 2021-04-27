@@ -28,11 +28,9 @@ export default class NavbarLeft extends Component {
                     <li className={trashActive}>
                         <a href="\trash">Çöp Kutusu</a>
                     </li>
-                    <li className={settingsActive}>
-                        <a href="\settings">Ayarlar</a>
-                    </li>
                 </ul>
-                
+                {
+                /*
                 <div className="card" style={{background:'#343a40'}}>
                     <ul className="list-group list-group-flush">
                     <li className="list-group-item" style={{background:'#343a40', color:'#fff',fontSize:'14px',textAlign:'left'}}>Kullanılan depolama alanı</li>
@@ -42,6 +40,8 @@ export default class NavbarLeft extends Component {
                     </li>
                     </ul>
                 </div>
+                */
+                }
                 </div>
             </div>
             

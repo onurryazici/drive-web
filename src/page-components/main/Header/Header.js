@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
 import Search from './Search'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-
+import {  FaFacebookMessenger, FaGgCircle, FaUserCircle,  } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
 export default class Header extends Component {
 
     state = {
@@ -20,30 +19,22 @@ export default class Header extends Component {
                 <div className="logo-stage">
                     <Link to= "/"><img src={logo} alt=""/></Link>
                 </div>
-                <Search/>
+                {/*<Search/>*/}
                 <ul className="user-menu-ul">
                     <li>
-                        <Link to="/">
-                            <span style={{color:'#ffc107', fontSize:'12px'}}>
-                                <FontAwesomeIcon icon={faCog} size='3x'/>
-                            </span>
-                           
-                        </Link> 
+                        <Button variant="link">
+                            <FaFacebookMessenger color="#ffc107" fontSize="35px" style={{marginTop:'-5px'}}/> 
+                        </Button>
                     </li>
                     <li>
                     <div className="dropdown" onClick={this.toggleOpen}>
                         <button className="btn shadow-none" type="button" id="user-dropdown-button" data-toggle="dropdown" aria-haspopup="true">
-                                <div id="user-dropdown-info">Onur Yazıcı</div>
+                                <div id="user-dropdown-info">{localStorage.getItem("username")}</div>
                                 <div id="user-dropdown-image">
-                                    <span>
-                                        <FontAwesomeIcon icon={faUserCircle}/>
-                                    </span>
+                                    <FaUserCircle style={{fontSize:'28px',marginTop:'-3px'}}/>
                                 </div>
                         </button>
                         <div className={menuClass} id="user-dropdown-context" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item btn-warning" href="#nogo">
-                            Profil
-                        </a>
                         <a className="dropdown-item btn-warning" href="#nogo">
                             Çıkış yap
                         </a>
