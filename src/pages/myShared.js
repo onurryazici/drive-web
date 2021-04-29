@@ -11,7 +11,7 @@ export default function MyShared() {
             <NavbarLeft/>
             <div id="main-container">
                 <RFM 
-                location                      = {`/home/${session.data.username}/.drive-shared`}
+                location                      = {`/home/${session.data.username}/drive-shared`}
                 rfmWindow                     = "MY_SHARED"
                 API_URL                       = "http://192.168.91.128:3030"
                 API_URL_UserAuthentication    = "/api/open-service/userAuthentication"
