@@ -5,13 +5,14 @@ import '../assets/Style.css'
 import RFM from 'react-file-manager-rfm'
 import 'react-file-manager-rfm/dist/index.css'
 function Drive(){
+    var session = JSON.parse(sessionStorage.getItem('sessionObject'))
     return(
         <div>
             <Header/>
             <NavbarLeft/>
             <div id="main-container">
                 <RFM 
-                location                      = {`/home/${localStorage.getItem("username")}/drive`}
+                location                      = {`/home/${session.data.username}/drive`}
                 rfmWindow                     = "DRIVE"
                 API_URL                       = "http://192.168.91.128:3030"
                 API_URL_UserAuthentication    = "/api/open-service/userAuthentication"

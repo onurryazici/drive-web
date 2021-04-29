@@ -7,7 +7,7 @@ export default class User extends Component {
             <img src="" width="50" height="50" alt="" />
             <br/>
             <br/>
-            <h3>{localStorage.getItem("username")}</h3>
+            <h3>{sessionStorage.getItem("sessionObject").data.username}</h3>
             <br/>
             <button type="button" className="btn btn-warning " style={{marginRight:'5px'}}>Hesap Ayarları</button>
             <button type="button" className="btn btn-warning ">Oturumu Kapat</button>

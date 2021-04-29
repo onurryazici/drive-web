@@ -4,13 +4,14 @@ import Header from '../page-components/main/Header/Header'
 import NavbarLeft from '../page-components/main/NavbarLeft/NavbarLeft'
 
 export default function SharedWithMe() {
+    var session = JSON.parse(sessionStorage.getItem('sessionObject'))
     return (
         <div>
             <Header/>
             <NavbarLeft/>
             <div id="main-container">
                 <RFM 
-                location                      = {`/home/${localStorage.getItem("username")}/.sharedWithMe`}
+                location                      = {`/home/${session.data.username}/.sharedWithMe`}
                 rfmWindow                     = "SHARED_WITH_ME"
                 API_URL                       = "http://192.168.91.128:3030"
                 API_URL_UserAuthentication    = "/api/open-service/userAuthentication"

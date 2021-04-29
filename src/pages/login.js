@@ -32,8 +32,18 @@ function Login(){
           }).then((response) => {
             if (response.data.message === "LOGIN_SUCCESSFULL") {
                 toast.success("Giriş başarılı. Yönlendiriliyorsunuz...");
-                localStorage.setItem("username",usernameData);
+                //localStorage.setItem("username",usernameData);
+                let now = new Date().getTime()
+                let expireMinute = 30
+                let expires = new Date(now + expireMinute*60000)
+                let sessionObject = {
+                    expiresAt: expires,
+                    data:{
+                        username:`${usernameData}`
+                    }
+                }
                 localStorage.setItem("user-token",response.data.token);
+                sessionStorage.setItem('sessionObject',JSON.stringify(sessionObject));
                 setIsLoggedIn(true);
             }
             else{
