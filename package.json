@@ -13,7 +13,6 @@
     "react-bootstrap": "^1.0.1",
     "react-contextmenu": "^2.14.0",
     "react-dom": "^16.13.1",
-    "react-file-manager-rfm": "file:react-file-manager-rfm-1.0.0.tgz",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
