@@ -1,14 +1,50 @@
-import React, { Component, useState } from 'react'
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import {Link, useLocation} from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
 import Search from './Search'
-import {  FaFacebookMessenger, FaGgCircle, FaUserCircle,  } from 'react-icons/fa';
+import {  FaCircle, FaDotCircle, FaFacebookMessenger, FaUserCircle  } from 'react-icons/fa';
 import { Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import styles from '../../../assets/styles.module.css'
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
+import '../../../assets/Style.css'
+import { MessengerSocket, MessengerStore } from 'messaging-app-ui';
 export default function Header() {
+    const [conversationList, setConversationList] = useState([])
+    const [haveUnreadMessage, setHaveUnreadMessage] = useState(false)
+    const currentPage = useLocation().pathname
     var session = JSON.parse(sessionStorage.getItem('sessionObject'))
+
+
+
+    useEffect(() => {
+        axios.post("http://192.168.91.128:4001/api/protected/getConversationList", {
+            loggedUser:session.data.username
+        }).then((response)=>{
+            console.log(response.data.conversations)
+            setConversationList(response.data.conversations)
+        }).catch((error)=>{
+            toast.error('Hata :' + error)
+        })
+
+        if(currentPage==="/messenger"){
+            setConversationList(MessengerStore.getState().conversationList)
+        }
+        else{
+            MessengerSocket.on("INCOMING_MESSAGE",()=>{
+                setHaveUnreadMessage(true)
+            })
+        }
+        
+    }, [])
+
+    useEffect(() => {
+        console.log("www")
+        console.log(conversationList)
+        const unreadExist = conversationList.some((element)=>element.read===false)
+        setHaveUnreadMessage(unreadExist)
+    }, [conversationList])
+
     function Logout(){
         axios.post("http://192.168.91.128:3030/api/secured/logout",{
             token:localStorage.getItem("user-token")
@@ -25,8 +61,13 @@ export default function Header() {
             </div>
             {/*<Search/>*/}
             <div className={styles.userMenu}>
-                <Button variant="link">
+                <Button variant="link" href="/messenger">
                     <FaFacebookMessenger className={styles.rightMenuIcons}/> 
+                    { haveUnreadMessage
+                      ? <FaCircle className={styles.haveUnreadMessage}/>
+                      : ""
+                    }
+                    
                 </Button>
                 <DropdownButton variant="flat" title={[
                         <FaUserCircle className={styles.rightMenuIcons}/>,

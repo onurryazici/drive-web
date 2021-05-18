@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from  '../page-components/main/Header/Header'
 import NavbarLeft from  '../page-components/main/NavbarLeft/NavbarLeft'
 import '../assets/Style.css'
 import RFM from 'react-file-manager-rfm'
 import 'react-file-manager-rfm/dist/index.css'
+import { MessengerSocket  } from 'messaging-app-ui'
 function Drive(){
     var session = JSON.parse(sessionStorage.getItem('sessionObject'))
+    useEffect(() => {
+        let usernameData = session.data.username
+        
+        MessengerSocket.auth = { usernameData }
+        MessengerSocket.connect()
+        MessengerSocket.emit("USER_CONNECTED", usernameData)    
+    }, [])
+    
+
     return(
         <div>
             <Header/>

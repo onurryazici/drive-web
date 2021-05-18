@@ -45,6 +45,7 @@ function Login(){
                 localStorage.setItem("user-token",response.data.token);
                 sessionStorage.setItem('sessionObject',JSON.stringify(sessionObject));
                 setIsLoggedIn(true);
+                
             }
             else{
                 toast.error('Girilen bilgiler yanlış')

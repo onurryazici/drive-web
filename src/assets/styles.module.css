@@ -8,3 +8,10 @@
     color:#ffc107;
     font-size: 35px;
 }
+
+.haveUnreadMessage{
+    color: red;
+    font-size: 12px;
+    top: -15px;
+    position: relative;
+  }

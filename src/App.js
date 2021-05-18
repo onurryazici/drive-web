@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from './pages/login'
 import Drive from './pages/drive'
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
@@ -6,6 +6,8 @@ import './App.css';
 import MyShared from './pages/myShared';
 import SharedWithMe from './pages/sharedWithMe';
 import Trash from './pages/trash';
+import Messenger from './pages/messenger'
+import { socket } from 'messaging-app-ui';
 function App() {
 
   const ProtectedRoute = ({component:Component, path, ...rest}) => {
@@ -29,7 +31,9 @@ function App() {
         <Redirect to="/login"/>
       )
     }
-}
+  }
+  
+  
 
   return (
     <div style={{fontFamily:'Century Gothic'}} className="App">
@@ -41,6 +45,7 @@ function App() {
           <ProtectedRoute exact path="/my-shared" component={MyShared}/>
           <ProtectedRoute exact path="/shared-with-me" component={SharedWithMe}/>
           <ProtectedRoute exact path="/trash" component={Trash}/>
+          <ProtectedRoute exact path="/messenger" component={Messenger}/>
         </Switch>
       </BrowserRouter>
     </div>
