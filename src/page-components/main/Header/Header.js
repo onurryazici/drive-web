@@ -9,38 +9,37 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import '../../../assets/Style.css'
 import { MessengerSocket, MessengerStore } from 'messaging-app-ui';
+import { useSelector } from 'react-redux';
 export default function Header() {
     const [conversationList, setConversationList] = useState([])
     const [haveUnreadMessage, setHaveUnreadMessage] = useState(false)
     const currentPage = useLocation().pathname
     var session = JSON.parse(sessionStorage.getItem('sessionObject'))
 
-
-
     useEffect(() => {
-        axios.post("http://192.168.91.128:4001/api/protected/getConversationList", {
-            loggedUser:session.data.username
-        }).then((response)=>{
-            console.log(response.data.conversations)
-            setConversationList(response.data.conversations)
-        }).catch((error)=>{
-            toast.error('Hata :' + error)
-        })
-
         if(currentPage==="/messenger"){
-            setConversationList(MessengerStore.getState().conversationList)
+            setInterval(() => {
+                setConversationList(MessengerStore.getState().conversationList)
+            }, 1000);
         }
         else{
             MessengerSocket.on("INCOMING_MESSAGE",()=>{
                 setHaveUnreadMessage(true)
             })
+            axios.post("http://192.168.91.128:4001/api/protected/getConversationList", {
+            loggedUser:session.data.username
+            }).then((response)=>{
+                console.log(response.data.conversations)
+                setConversationList(response.data.conversations)
+            }).catch((error)=>{
+                toast.error('Hata :' + error)
+            })
         }
-        
     }, [])
 
+
+
     useEffect(() => {
-        console.log("www")
-        console.log(conversationList)
         const unreadExist = conversationList.some((element)=>element.read===false)
         setHaveUnreadMessage(unreadExist)
     }, [conversationList])
@@ -49,6 +48,7 @@ export default function Header() {
         axios.post("http://192.168.91.128:3030/api/secured/logout",{
             token:localStorage.getItem("user-token")
         }).then((response)=>{
+            // socketi destroy et 
             sessionStorage.removeItem('sessionObject')
             sessionStorage.clear()
         })
