@@ -27,7 +27,7 @@ export default function Header() {
                 setHaveUnreadMessage(true)
             })
             axios.post("http://192.168.91.128:4001/api/protected/getConversationList", {
-            loggedUser:session.data.username
+                loggedUser:session.data.username
             }).then((response)=>{
                 console.log(response.data.conversations)
                 setConversationList(response.data.conversations)
@@ -49,6 +49,7 @@ export default function Header() {
             token:localStorage.getItem("user-token")
         }).then((response)=>{
             // socketi destroy et 
+            MessengerSocket.disconnect()
             sessionStorage.removeItem('sessionObject')
             sessionStorage.clear()
         })

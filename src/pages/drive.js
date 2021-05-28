@@ -4,7 +4,7 @@ import NavbarLeft from  '../page-components/main/NavbarLeft/NavbarLeft'
 import '../assets/Style.css'
 import RFM from 'react-file-manager-rfm'
 import 'react-file-manager-rfm/dist/index.css'
-import { MessengerSocket  } from 'messaging-app-ui'
+import { MessengerSocket, MessengerStore  } from 'messaging-app-ui'
 function Drive(){
     var session = JSON.parse(sessionStorage.getItem('sessionObject'))
     useEffect(() => {
@@ -13,6 +13,7 @@ function Drive(){
         MessengerSocket.auth = { usernameData }
         MessengerSocket.connect()
         MessengerSocket.emit("USER_CONNECTED", usernameData)    
+        MessengerStore.selectedUser=""
     }, [])
     
 
@@ -24,8 +25,10 @@ function Drive(){
                 <RFM 
                 location                      = {`/home/${session.data.username}/drive`}
                 rfmWindow                     = "DRIVE"
+                username                      = {`${session.data.username}`}
                 API_URL                       = "http://192.168.91.128:3030"
                 API_URL_UserAuthentication    = "/api/open-service/userAuthentication"
+                API_URL_AddToDrive            = "/api/secured/addToDrive"
                 API_URL_RemoveItemPermanently = "/api/secured/removeItemPermanently"
                 API_URL_RemoveSharedItem      = "/api/secured/removeSharedItem"
                 API_URL_CreateCopy            = "/api/secured/createCopy"
@@ -33,6 +36,7 @@ function Drive(){
                 API_URL_Download              = "/api/secured/download"
                 API_URL_EmptyTrash            = "/api/secured/emptyTrash"
                 API_URL_GetDirectory          = "/api/secured/getDirectory"
+                API_URL_GetDataSingle         = "/api/secured/getDataSingle"
                 API_URL_GetImage              = "/api/secured/getImage"
                 API_URL_MoveItems             = "/api/secured/moveItems"
                 API_URL_MoveToTrash           = "/api/secured/moveToTrash"
