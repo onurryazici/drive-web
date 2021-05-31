@@ -29,7 +29,6 @@ body{
   background: rgba(163,163,163, 0.6);
 }
 #login-box img{
-  width: 280px;
   height: 60px;
   margin-bottom: 15px;
 }
@@ -157,7 +156,6 @@ body{
   float: left;
 }
 .logo-stage img{
-  width: 220px;
   height: 45px;
 }
 .contents{
