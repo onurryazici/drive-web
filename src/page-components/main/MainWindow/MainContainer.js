@@ -9,7 +9,7 @@ function MainContainer(){
         <RFM 
           location                      = "/home/main/drive/tester"
           rfmWindow                     = "SHARED_WITH_ME"
-          API_URL                       = "http://192.168.91.128:3030"
+          API_URL                       = "http://192.168.91.130:3030"
           API_URL_UserAuthentication    = "/api/open-service/userAuthentication"
           API_URL_RemoveItemPermanently = "/api/secured/removeItemPermanently"
           API_URL_CreateCopy            = "/api/secured/createCopy"

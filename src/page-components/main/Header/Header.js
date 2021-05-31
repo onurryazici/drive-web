@@ -26,7 +26,7 @@ export default function Header() {
             MessengerSocket.on("INCOMING_MESSAGE",()=>{
                 setHaveUnreadMessage(true)
             })
-            axios.post("http://192.168.91.128:4001/api/protected/getConversationList", {
+            axios.post("http://192.168.91.130:4001/api/protected/getConversationList", {
                 loggedUser:session.data.username
             }).then((response)=>{
                 console.log(response.data.conversations)
@@ -45,7 +45,7 @@ export default function Header() {
     }, [conversationList])
 
     function Logout(){
-        axios.post("http://192.168.91.128:3030/api/secured/logout",{
+        axios.post("http://192.168.91.130:3030/api/secured/logout",{
             token:localStorage.getItem("user-token")
         }).then((response)=>{
             // socketi destroy et 
