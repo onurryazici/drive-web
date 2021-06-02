@@ -45,10 +45,9 @@ body{
 
 .menu-stage{
   position: fixed;
-  width: 100%;
+  width: 245px;
   height: 60px;
-  /* border-bottom: solid thin #dedede; */
-  box-shadow: 0px -12px 16px 0px;
+  border-bottom: solid thin #505050; 
   padding: 10px;
   background:#343a40;
   z-index: 4;
@@ -156,7 +155,7 @@ body{
   float: left;
 }
 .logo-stage img{
-  height: 45px;
+  height: 38px;
 }
 .contents{
   background: #000;
@@ -182,10 +181,9 @@ body{
 
 #main-container{
   width: calc(100% - 245px);
-  height: calc(100% - 60px);
+  height: 100%;
   position: absolute;
   right:0px;
-  top:60px;
 }
 .user-menu-ul {
   list-style-type: none;
@@ -268,7 +266,10 @@ body{
 }
 .sidenav-active{
   background: rgba(163,163,163, 0.2);
-  border-left: solid 5px #fff;
+  border-left: solid 5px #ffc107;
+}
+.sidenav-active a {
+  color:#ffc107
 }
 /* For upload button */
 .sidenav-a{

@@ -60,7 +60,7 @@ export default function Header() {
             <div className="logo-stage">
                 <Link to= "/"><img src={logo} alt=""/></Link>
             </div>
-            {/*<Search/>*/}
+            {/*
             <div className={styles.userMenu}>
                 <Button variant="link" href="/messenger">
                     <FaFacebookMessenger className={styles.rightMenuIcons}/> 
@@ -75,7 +75,7 @@ export default function Header() {
                         <span style={{color:"#FFFFFF",marginLeft:'8px'}}>{session.data.username}</span>]}>
                     <Dropdown.Item href="/logout" onClick={()=>Logout()}>Çıkış yap</Dropdown.Item>
                 </DropdownButton> 
-            </div>
+                </div>*/}
         </div>
     )
 }

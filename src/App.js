@@ -41,11 +41,12 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/logout"><Redirect to="/login"/></Route>
-          <ProtectedRoute exact path="/" component={Drive}/>
-          <ProtectedRoute exact path="/my-shared" component={MyShared}/>
-          <ProtectedRoute exact path="/shared-with-me" component={SharedWithMe}/>
-          <ProtectedRoute exact path="/trash" component={Trash}/>
-          <ProtectedRoute exact path="/messenger" component={Messenger}/>
+          <ProtectedRoute exact path="/"><Redirect to="/client/drive"/></ProtectedRoute>
+          <ProtectedRoute exact path="/client/drive" component={Drive}/>
+          <ProtectedRoute exact path="/client/my-shared" component={MyShared}/>
+          <ProtectedRoute exact path="/client/shared-with-me" component={SharedWithMe}/>
+          <ProtectedRoute exact path="/client/trash" component={Trash}/>
+          <ProtectedRoute exact path="/client/messenger" component={Messenger}/>
         </Switch>
       </BrowserRouter>
     </div>

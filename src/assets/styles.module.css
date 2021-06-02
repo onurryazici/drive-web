@@ -1,7 +1,12 @@
 .userMenu{
-    float:right;
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
     margin-top: -5px;
+    align-items: flex-start;
+    padding-bottom: 20px;
 }
 
 .rightMenuIcons{
@@ -12,6 +17,18 @@
 .haveUnreadMessage{
     color: red;
     font-size: 12px;
-    top: -15px;
+    left: 10px;
     position: relative;
-  }
+}
+.messengerButton{
+    background-color: #ffc107;
+    color:#000;
+}
+.messengerButton:hover{
+    opacity:0.6;
+    background: #5d656e;
+}
+.userButton{
+    text-align: left;
+    width: 100%;
+}
