@@ -72,7 +72,8 @@ body{
   left: 0;
   background-color: #343a40;
   overflow-x: hidden;
-  margin-top: 59px;
+  display: flex;
+  flex-direction: column;
   /* border-right: solid thin #dedede; */
 }
 
@@ -115,47 +116,14 @@ body{
   border-radius: 25px;
 }
 
-/*
-.menuPointer {
-  width: 90%;
-  height: 50px;
-  padding-top: 8px;
-  position: relative;
-  background:#5d656e;
-  padding-left: 15px;
-  margin-bottom: 3px;
-}
-
-.menuPointer:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-}
-.menuPointer:before {
-  content: "";
-  position: absolute;
-  right: -20px;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid #5d656e;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-}*/
-
 .logo-stage{
-  width: 25px;
-  height: 45px;
+  width: 100%;
+  height: 60px;
   float: left;
 }
 .logo-stage img{
-  height: 38px;
+  height: 50px;
+  margin-top: 5px;
 }
 .contents{
   background: #000;
@@ -178,8 +146,12 @@ body{
   display: block;
   overflow-y: scroll;
 }
-
-#main-container{
+#main-container-mobile{
+  width:100%;
+  height: calc(100% - 55px);
+  position: absolute;
+}
+#main-container-desktop{
   width: calc(100% - 245px);
   height: 100%;
   position: absolute;
@@ -228,7 +200,7 @@ body{
 
 
 .sidenav {
-  height: calc(100% - 55px);
+  height: 100%;
   width: 245px;
   position: fixed;
   z-index: 1;
@@ -236,7 +208,6 @@ body{
   left: 0;
   background-color: #343a40;
   overflow-x: hidden;
-  margin-top: 59px;
   /* border-right: solid thin #dedede; */
 }
 
@@ -270,6 +241,15 @@ body{
 }
 .sidenav-active a {
   color:#ffc107
+}
+.navbar-notification{
+  position: absolute;
+  right: 10px;
+  color: #ff0000;
+  top: 3px;
+}
+.navbar-active{
+  color:#ffc107;
 }
 /* For upload button */
 .sidenav-a{
@@ -322,45 +302,6 @@ body{
   border-radius: 25px;
 }
 
-/*
-.menuPointer {
-  width: 90%;
-  height: 50px;
-  padding-top: 8px;
-  position: relative;
-  background:#5d656e;
-  padding-left: 15px;
-  margin-bottom: 3px;
-}
-
-.menuPointer:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-}
-.menuPointer:before {
-  content: "";
-  position: absolute;
-  right: -20px;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid #5d656e;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-}*/
-
-.logo-stage{
-  width: 235px;
-  height: 45px;
-  float: left;
-}
 
 .contentsZone{
   background: #000;

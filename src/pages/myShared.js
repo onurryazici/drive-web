@@ -1,8 +1,9 @@
 import { MessengerSocket, MessengerStore } from 'messaging-app-ui'
 import React, { useEffect } from 'react'
 import RFM, { RFM_Socket } from 'react-file-manager-rfm'
-import Header from '../page-components/main/Header/Header'
-import NavbarLeft from '../page-components/main/NavbarLeft/NavbarLeft'
+import { useMediaQuery } from 'react-responsive'
+import NavbarMobile from '../components/navbar'
+import Sidebar from '../components/sidebar'
 
 export default function MyShared() {
     var session = JSON.parse(sessionStorage.getItem('sessionObject'))
@@ -18,11 +19,18 @@ export default function MyShared() {
         RFM_Socket.connect()
         RFM_Socket.emit("USER_CONNECTED", usernameData)
     }, [])
+
+    const isDesktopOrLaptop = useMediaQuery({ query: '(min-device-width: 1224px)' })
+    const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
+    const containerStyle= isDesktopOrLaptop || isBigScreen ? "main-container-desktop" : "main-container-mobile"
     return (
-        <div>
-            <Header/>
-            <NavbarLeft/>
-            <div id="main-container">
+        <React.Fragment>
+            {
+                isDesktopOrLaptop || isBigScreen 
+                ? <Sidebar/>
+                : <NavbarMobile/>
+            }
+            <div id={containerStyle}>
                 <RFM 
                 location                      = {`/home/${session.data.username}/drive-shared`}
                 rfmWindow                     = "MY_SHARED"
@@ -53,6 +61,6 @@ export default function MyShared() {
                 tokenName                     = "user-token"
                 />
                 </div>
-        </div>
+        </React.Fragment>
     )
 }

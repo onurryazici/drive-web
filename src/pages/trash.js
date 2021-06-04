@@ -1,8 +1,9 @@
 import { MessengerSocket, MessengerStore } from 'messaging-app-ui'
 import React, { useEffect } from 'react'
-import RFM, { RFM_Socket } from 'react-file-manager-rfm'
-import Header from '../page-components/main/Header/Header'
-import NavbarLeft from '../page-components/main/NavbarLeft/NavbarLeft'
+import RFM from 'react-file-manager-rfm'
+import { useMediaQuery } from 'react-responsive'
+import NavbarMobile from '../components/navbar'
+import Sidebar from '../components/sidebar'
 
 export default function Trash() {
     var session = JSON.parse(sessionStorage.getItem('sessionObject'))
@@ -12,15 +13,18 @@ export default function Trash() {
         MessengerSocket.connect()
         MessengerSocket.emit("USER_CONNECTED", usernameData)    
         MessengerStore.selectedUser=""
-        RFM_Socket.auth = { usernameData}
-        RFM_Socket.connect()
-        RFM_Socket.emit("USER_CONNECTED", usernameData)
     }, [])
+    const isDesktopOrLaptop = useMediaQuery({ query: '(min-device-width: 1224px)' })
+    const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
+    const containerStyle= isDesktopOrLaptop || isBigScreen ? "main-container-desktop" : "main-container-mobile"
     return (
-        <div>
-            <Header/>
-            <NavbarLeft/>
-            <div id="main-container">
+        <React.Fragment>
+            {
+                isDesktopOrLaptop || isBigScreen 
+                ? <Sidebar/>
+                : <NavbarMobile/>
+            }
+            <div id={containerStyle}>
                 <RFM 
                 location                      = {`/home/${session.data.username}/.local/share/Trash/files`}
                 rfmWindow                     = "RECYCLE_BIN"
@@ -51,6 +55,6 @@ export default function Trash() {
                 tokenName                     = "user-token"
                 />
                 </div>
-        </div>
+        </React.Fragment>
     )
 }
