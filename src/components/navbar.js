@@ -2,7 +2,7 @@ import axios from 'axios'
 import { MessengerSocket, MessengerStore } from 'messaging-app-ui'
 import React, { useEffect, useState } from 'react'
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
-import { FaCircle } from 'react-icons/fa'
+import { FaCircle, FaFacebookMessenger, FaUserCircle } from 'react-icons/fa'
 import { Link, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import logo from '../assets/images/logo.png'
@@ -57,10 +57,14 @@ export default function NavbarMobile() {
                     <Nav.Link href="/client/shared-with-me" style={{color:sharedWithMeActive}}>Benimle Paylaşılanlar</Nav.Link>
                     <Nav.Link href="/client/trash" style={{color:trashActive}}>Çöp Kutusu</Nav.Link>
                     <Nav.Link href="/client/messenger" style={{color:messengerActive}}>
-                        Mesajlar { haveUnreadMessage 
+                        <FaFacebookMessenger color="#ffc107" fontSize="25px" style={{marginRight:'5px'}}/> Mesajlar { haveUnreadMessage 
                         ? <FaCircle color="#ff0000" fontSize="14px" style={{marginLeft:"5px"}}/>
                         : "" }
                     </Nav.Link>
+                    <NavDropdown title={[<FaUserCircle color="#ffc107" fontSize="25px" style={{marginRight:'5px'}}/>,session.data.username]} id="basic-nav-dropdown">
+                        
+                        <NavDropdown.Item href="/logout">Çıkış yap</NavDropdown.Item>
+                    </NavDropdown>
                 </Nav>
             </Navbar.Collapse>
             { haveUnreadMessage
