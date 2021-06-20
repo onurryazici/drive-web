@@ -8,6 +8,7 @@ import SharedWithMe from './pages/sharedWithMe';
 import Trash from './pages/trash';
 import Messenger from './pages/messenger'
 import { socket } from 'messaging-app-ui';
+import Logout from './pages/logout';
 function App() {
 
   const ProtectedRoute = ({component:Component, path, ...rest}) => {
@@ -40,7 +41,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/login" component={Login}/>
-          <Route exact path="/logout"><Redirect to="/login"/></Route>
+          <Route exact path="/logout" component={Logout}/>
           <ProtectedRoute exact path="/"><Redirect to="/client/drive"/></ProtectedRoute>
           <ProtectedRoute exact path="/client/drive" component={Drive}/>
           <ProtectedRoute exact path="/client/my-shared" component={MyShared}/>

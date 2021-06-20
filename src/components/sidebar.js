@@ -47,14 +47,6 @@ function Sidebar( ) {
         setHaveUnreadMessage(unreadExist) 
     }, [conversationList])
 
-    function Logout(){
-        axios.get(`http://192.168.91.130:3030/api/secured/logout?token=${localStorage.getItem('user-token')}`)
-        .then((response)=>{
-            if(response.data.statu){
-                return <Redirect to="/login"/>
-            }
-        })
-    }
     return (   
         <React.Fragment>
             <div className="sidenav">
@@ -100,7 +92,7 @@ function Sidebar( ) {
                         <DropdownButton variant="flat" drop="up" block style={{width:'100%',textAlign:'left', display:'flex', flexDirection:'column'}} title={[
                             <FaUserCircle className={styles.rightMenuIcons}/>,
                             <span style={{color:"#FFFFFF",marginLeft:'8px'}}>{session.data.username}</span>]}>
-                            <Dropdown.Item href="/logout" onClick={()=>Logout()}>Çıkış yap</Dropdown.Item>
+                            <Dropdown.Item href="/logout" >Çıkış yap</Dropdown.Item>
                         </DropdownButton> 
                     </div>
                 </div>
