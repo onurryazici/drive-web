@@ -11,4 +11,5 @@ export default function Logout() {
             history.push("/login")
         })
     }, [])
+    return ""
 }
