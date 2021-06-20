@@ -47,8 +47,11 @@ function Login(){
                 setIsLoggedIn(true);
                 
             }
+            else if(response.data.message === "IP_BANNED"){
+                toast.error("Sistem sizi bloke etti. Lütfen biraz sonra deneyin.")
+            }
             else{
-                toast.error('Girilen bilgiler yanlış')
+                toast.error('Girilen bilgiler yanlış ' + response.data.message)
             }
             setLoading(false);
             setLoginDisabled(false);

@@ -46,6 +46,15 @@ function Sidebar( ) {
         const unreadExist = conversationList.some((element)=>element.read===false)
         setHaveUnreadMessage(unreadExist) 
     }, [conversationList])
+
+    function Logout(){
+        axios.get(`http://192.168.91.130:3030/api/secured/logout?token=${localStorage.getItem('user-token')}`)
+        .then((response)=>{
+            if(response.data.statu){
+                return <Redirect to="/login"/>
+            }
+        })
+    }
     return (   
         <React.Fragment>
             <div className="sidenav">
