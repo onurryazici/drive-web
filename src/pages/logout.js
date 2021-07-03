@@ -6,7 +6,7 @@ export default function Logout() {
     const token = localStorage.getItem("user-token")
     const history = useHistory();
     useEffect(() => {
-        axios.get(`http://192.168.91.130:3030/api/secured/logout?token=${token}`)
+        axios.get(`http://192.168.91.130:3030/api/open-service/logout?token=${token}`)
         .then((response)=>{
             history.push("/login")
         })
