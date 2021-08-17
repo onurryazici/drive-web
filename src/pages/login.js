@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import logo from '../assets/images/logo.png'
-import { HTTP_REQUEST } from '../helper/global';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 function Login(){
     const [usernameData, setUsernameData] = useState("");
@@ -26,7 +26,7 @@ function Login(){
         event.preventDefault();
         setLoading(true);
         setLoginDisabled(true)
-        HTTP_REQUEST.post('open-service/userAuthentication',{
+        axios.post('http://localhost:3030/api/open-service/userAuthentication',{
             username: usernameData,
             password: passwordData
           }).then((response) => {
