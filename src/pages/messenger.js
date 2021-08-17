@@ -28,7 +28,7 @@ function Messenger(){
             MessengerSocket.on("INCOMING_MESSAGE",()=>{
                 setHaveUnreadMessage(true)
             })
-            axios.post("http://192.168.91.130:4001/api/protected/getConversationList", {
+            axios.post("http://localhost:4001/api/protected/getConversationList", {
                 loggedUser:session.data.username
             }).then((response)=>{
                 console.log(response.data.conversations)
