@@ -31,7 +31,6 @@ function Login(){
             password: passwordData
           }).then((response) => {
             if (response.data.message === "LOGIN_SUCCESSFULL") {
-                alert("okkk")
                 toast.success("Giriş başarılı. Yönlendiriliyorsunuz...");
                 //localStorage.setItem("username",usernameData);
                 let now = new Date().getTime()
@@ -44,9 +43,8 @@ function Login(){
                     }
                 }
                 localStorage.setItem("user-token",response.data.token);
-                sessionStorage.setItem('sessionObject',JSON.stringify(sessionObject));
-                setIsLoggedIn(true);
-                
+                sessionStorage.setItem("sessionObject",JSON.stringify(sessionObject));
+                setIsLoggedIn(true);                
             }
             else if(response.data.message === "IP_BANNED"){
                 toast.error("Sistem sizi bloke etti. Lütfen biraz sonra deneyin.")
