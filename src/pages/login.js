@@ -26,7 +26,7 @@ function Login(){
         event.preventDefault();
         setLoading(true);
         setLoginDisabled(true)
-        axios.post('http://localhost:3030/api/open-service/userAuthentication',{
+        axios.post('http://'+window.location.hostname+':3030/api/open-service/userAuthentication',{
             username: usernameData,
             password: passwordData
           }).then((response) => {

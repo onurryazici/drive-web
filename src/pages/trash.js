@@ -29,7 +29,7 @@ export default function Trash() {
                 location                      = {`/home/${session.data.username}/.local/share/Trash/files`}
                 rfmWindow                     = "RECYCLE_BIN"
                 username                      = {`${session.data.username}`}
-                API_URL                       = "http://localhost:3030"
+                API_URL                       = {"http://"+window.location.hostname+":3030"}
                 API_URL_UserAuthentication    = "/api/open-service/userAuthentication"
                 API_URL_AddToDrive            = "/api/secured/addToDrive"
                 API_URL_RemoveItemPermanently = "/api/secured/removeItemPermanently"
