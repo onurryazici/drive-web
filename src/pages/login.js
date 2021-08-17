@@ -31,6 +31,7 @@ function Login(){
             password: passwordData
           }).then((response) => {
             if (response.data.message === "LOGIN_SUCCESSFULL") {
+                alert("okkk")
                 toast.success("Giriş başarılı. Yönlendiriliyorsunuz...");
                 //localStorage.setItem("username",usernameData);
                 let now = new Date().getTime()
